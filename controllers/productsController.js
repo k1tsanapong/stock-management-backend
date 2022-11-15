@@ -13,7 +13,7 @@ const createProductPage = (req, res) => {
 
 const createProduct = async(req, res) => {
   const createdProduct = await productModels.createProduct(req.body);
-  res.send(createdProduct);
+  res.redirect('/')
 };
 
   module.exports = {
