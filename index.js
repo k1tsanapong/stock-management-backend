@@ -2,7 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 
 const homePage = require('./routers/homePage')
-const ProductRouter = require("./routers/product");
+const ProductRouter = require("./routers/productsRouter");
 
 
 const app = express();

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> baseHead customTitle ='New product'}}
+
+<body>
+
+    <h1>New Product</h1>
+
+    <form 
+    action="/products/new"
+    method="post"
+    >
+
+    <p>
+        <input type="text" name="product_name" placeholder="product_name">
+    </p>
+
+    <p>
+        <input type="text" name="product_detail" placeholder="product_detail">
+    </p>
+
+    <p>
+        <input type="text" name="product_img" placeholder="image link">
+    </p>
+
+    <p>
+        <input type="number" name="critical" placeholder="critical">
+    </p>
+
+    <p>
+        <input type="number" name="min" placeholder="min">
+    </p>
+
+    <p>
+        <input type="number" name="max" placeholder="max">
+    </p>
+
+    <p>
+        <input type="text" name="barcode" placeholder="barcode">
+    </p>
+
+
+    <p>
+        <button type="submit">Create Product</button>
+    </p>
+    </form>
+
+  
+    
+</body>
+</html>
