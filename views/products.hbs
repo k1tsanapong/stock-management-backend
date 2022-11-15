@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{{> baseHead customTitle ='product'}}
+{{> baseHead customTitle ='products'}}
 
 <body>
+    <h1> All Products </h1>
+
     <form action="/">
         <input type="submit" value="home" />
+    </form>
+    <form action="/products/new">
+        <input type="submit" value="New Product" />
     </form>
 
     {{#each allProducts}}
     
     <h1>{{this.product_name}}</h1>
-    <img src="{{this.product_img}}" alt="product image" width="500" height="600">
+    <img src="{{this.product_img}}" alt="product image" height="100">
+    <hr>
 
 
     {{/each}}

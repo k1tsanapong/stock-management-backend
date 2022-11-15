@@ -4,6 +4,8 @@
 {{> baseHead customTitle ='New product'}}
 
 <body>
+    <h1> New Product </h1>
+
 
     <form action="/">
         <input type="submit" value="home" />
@@ -13,12 +15,18 @@
         <input type="submit" value="All Products" />
     </form>
 
-    <h1>New Product</h1>
 
     <form 
     action="/products/new"
     method="post"
+    {{!-- enctype="multipart/form-data" --}}
+    
     >
+
+    <p>
+            <input accept="image/*" type='file' id="imgInp" />
+            <img id="blah" height="100"/>
+    </p>
 
     <p>
         <input type="text" name="product_name" placeholder="product_name">
@@ -26,10 +34,6 @@
 
     <p>
         <input type="text" name="product_detail" placeholder="product_detail">
-    </p>
-
-    <p>
-        <input type="text" name="product_img" placeholder="image link">
     </p>
 
     <p>
@@ -53,6 +57,21 @@
         <button type="submit">Create Product</button>
     </p>
     </form>
+
+
+
+    <script>
+       
+
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+                blah.src = URL.createObjectURL(file)
+             }          
+        }
+
+    </script>
+
 
   
     

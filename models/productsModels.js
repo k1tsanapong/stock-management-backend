@@ -19,13 +19,15 @@ const getAllProducts = async () => {
 
 const createProduct = async (data) => {
 
-    const {product_name, product_detail, product_img, critical, min, max, barcode} = data ?? {};
+    console.log(data);
+
+    const {product_name, product_detail, critical, min, max, barcode} = data ?? {};
     
     let results = [];
 
     try {
         results = await db
-        .insert({product_name, product_detail, product_img, critical, min, max, barcode}).into('product_types');
+        .insert({product_name, product_detail, critical, min, max, barcode}).into('product_types');
     }
     catch (err)
     {
