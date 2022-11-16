@@ -15,17 +15,26 @@
         <input type="submit" value="All Products" />
     </form>
 
+    {{!-- <form action="/products/upload" method="POST">
+        <input accept="image/*" type='file' id="imgInp" name="image"/>
+        <button type="submit">Upload</button>
+    </form> --}}
+
+    {{!-- <form runat="server" action="/products/upload" method="POST">
+  <input accept="image/*" type='file' id="imgInp" name="image"/>
+  <img id="blah"   height="100"/>
+</form> --}}
+
 
     <form 
-    action="/products/new"
+    action="/products/upload"
     method="post"
-    {{!-- enctype="multipart/form-data" --}}
-    
+    enctype="multipart/form-data"
     >
 
     <p>
-            <input accept="image/*" type='file' id="imgInp" />
-            <img id="blah" height="100"/>
+    <input accept="image/*" type='file' id="imgInp" name="product_img"/>
+    <img id="blah"   height="100"/>
     </p>
 
     <p>
@@ -63,12 +72,13 @@
     <script>
        
 
-        imgInp.onchange = evt => {
-            const [file] = imgInp.files
-            if (file) {
-                blah.src = URL.createObjectURL(file)
-             }          
-        }
+       imgInp.onchange = evt => {
+  const [file] = imgInp.files
+  if (file) {
+    blah.src = URL.createObjectURL(file)
+    //document.getElementsByTagName('form')[0].submit()
+  }
+}
 
     </script>
 
