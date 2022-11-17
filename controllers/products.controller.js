@@ -2,7 +2,7 @@ const productModels = require('../models/products.models');
 
 const getAllProducts = async (req, res) => {
     const allProducts =  await productModels.getAllProducts();
-    res.render('products',{allProducts});
+    res.send(JSON.stringify({ "status": 200, "error": null, "response": allProducts }));
   };
 
   
