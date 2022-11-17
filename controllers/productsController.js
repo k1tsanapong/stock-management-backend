@@ -17,15 +17,18 @@ const createProduct = async(req, res) => {
 
 const uploadImageProduct = async (req, res) => {
 
+  console.log(req.files)
+
+  console.log('======================================');
   const uploadImageProduct = await productModels.uploadImageProduct(req.files);
 
-  const resFromUpload = JSON.stringify({ "detail": req.body, "img": uploadImageProduct});
+  // const resFromUpload = JSON.stringify({ "detail": req.body, "img": uploadImageProduct});
 
-  const resFromUploadObject = JSON.parse(resFromUpload);
+  // const resFromUploadObject = JSON.parse(resFromUpload);
 
-  console.log(resFromUpload)
+  // console.log(resFromUpload)
 
-  const createdProduct = await productModels.createProduct(resFromUploadObject);
+  // const createdProduct = await productModels.createProduct(resFromUploadObject);
   res.redirect('/')
 
 }

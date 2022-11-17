@@ -19,17 +19,17 @@ const getAllProducts = async () => {
 
 const createProduct = async (data) => {
 
-    console.log('obj')
-    console.log('====================')
-    console.log(data)
+    // console.log('obj')
+    // console.log('====================')
+    // console.log(data)
 
 
     const {product_name, product_detail, critical, min, max, barcode} = data.detail ?? {};
     const product_img = data.img;
     // const product_img = data.files.product_img.name ?? {};
 
-    console.log(data.detail)
-    console.log(data.img)
+    // console.log(data.detail)
+    // console.log(data.img)
     let results = [];
 
     try {

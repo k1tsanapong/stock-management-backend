@@ -1,13 +1,18 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 
+const cors = require('cors');
+const app = express();
+
+app.use(cors({ origin: true }));
+app.use(cors());
+
 const hbs = require('hbs');
 
 const homePage = require('./routers/homePage')
 const ProductRouter = require("./routers/productsRouter");
 
 
-const app = express();
 
 app.use(fileUpload());
 
@@ -24,7 +29,7 @@ app.use("/products", ProductRouter);
 
 
 
-app.listen(3000, () => {
+app.listen(3001, () => {
     console.log('start');
-
+    console.log('http://localhost:3001/');
 })
