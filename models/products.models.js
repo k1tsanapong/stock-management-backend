@@ -1,4 +1,5 @@
 const db = require('../db');
+const sharp = require("sharp");
 
 const getAllProducts = async () => {
 
@@ -19,17 +20,9 @@ const getAllProducts = async () => {
 
 const createProduct = async (data) => {
 
-    // console.log('obj')
-    // console.log('====================')
-    // console.log(data)
-
-
     const {product_name, product_detail, critical, min, max, barcode} = data.detail ?? {};
     const product_img = data.img;
-    // const product_img = data.files.product_img.name ?? {};
 
-    // console.log(data.detail)
-    // console.log(data.img)
     let results = [];
 
     try {
@@ -42,20 +35,19 @@ const createProduct = async (data) => {
     }
 }
 
-const uploadImageProduct = async (data) => {
+const uploadImageProduct = async (image) => {
 
-    const { product_img } = data ?? {};
+    const { product_img } = image ?? {};
+    // if (!product_img) return image;
+
+    const { data } = product_img;
+
+    const ref = `${Math.floor(100000 + Math.random() * 900000)}-${new Date().getDay()}-${new Date().getMonth()}-${new Date().getFullYear()}.jpg`;
     
-    // console.log(product_img)
-
-    // If no image submitted, exit
-    if (!product_img) return data;
-
-    // Move the uploaded image to our upload folder
-    await product_img.mv(__dirname + '/../' + '/static/' + product_img.name);
-
-    return product_img.name
-
+    await sharp(data)
+    .jpeg({ quality: 50 })
+    .toFile(__dirname + '/../' + '/static/' + ref);
+    return ref
 
 }
 

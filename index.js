@@ -10,7 +10,7 @@ app.use(cors());
 const hbs = require('hbs');
 
 const homePage = require('./routers/homePage')
-const ProductRouter = require("./routers/productsRouter");
+const ProductRouter = require("./routers/products.router");
 
 
 

@@ -14,7 +14,8 @@
     "hbs": "^4.2.0",
     "knex": "^2.3.0",
     "mysql-await": "^2.2.2",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "sharp": "^0.31.2"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",

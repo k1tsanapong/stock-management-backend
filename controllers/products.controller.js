@@ -1,4 +1,4 @@
-const productModels = require('../models/productsModels');
+const productModels = require('../models/products.models');
 
 const getAllProducts = async (req, res) => {
     const allProducts =  await productModels.getAllProducts();
@@ -17,9 +17,7 @@ const createProduct = async(req, res) => {
 
 const uploadImageProduct = async (req, res) => {
 
-  console.log(req.files)
 
-  console.log('======================================');
   const uploadImageProduct = await productModels.uploadImageProduct(req.files);
 
   // const resFromUpload = JSON.stringify({ "detail": req.body, "img": uploadImageProduct});
