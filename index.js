@@ -9,8 +9,9 @@ app.use(cors());
 
 const hbs = require('hbs');
 
-const homePage = require('./routers/homePage')
-const ProductRouter = require("./routers/products.router");
+const homePage = require('./routers/homePage');
+const productsRouter = require('./routers/products.router');
+const warehousesRouter = require('./routers/warehouses.router');
 
 
 
@@ -22,7 +23,8 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.use('/static', express.static('static'));
 
 app.use('/', homePage);
-app.use("/products", ProductRouter);
+app.use('/products', productsRouter);
+app.use('/warehouses', warehousesRouter);
 
 
 

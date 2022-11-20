@@ -10,11 +10,11 @@ const getAllProducts = async () => {
         .select('*')
         .from('product_types');
 
-        
+        console.log('getAllProducts => Successes')
 
-        return results;
+        return JSON.stringify({ "status": 200, "error": null, "response": results });
     } catch (err) {
-        return results;
+        return JSON.stringify({ "status": 500, "error": err, "response": results });
     }
 };
 

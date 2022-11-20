@@ -2,7 +2,8 @@ const productModels = require('../models/products.models');
 
 const getAllProducts = async (req, res) => {
     const allProducts =  await productModels.getAllProducts();
-    res.send(JSON.stringify({ "status": 200, "error": null, "response": allProducts }));
+    console.log(allProducts);
+    res.send(allProducts);
   };
 
   
@@ -12,7 +13,7 @@ const createProductPage = (req, res) => {
 
 const createProduct = async(req, res) => {
   const createdProduct = await productModels.createProduct(req.body);
-  res.redirect('/')
+  res.send(createdProduct);
 };
 
 const uploadImageProduct = async (req, res) => {
@@ -27,7 +28,8 @@ const uploadImageProduct = async (req, res) => {
   console.log(resFromUpload)
 
   const createdProduct = await productModels.createProduct(resFromUploadObject);
-  res.redirect('/')
+
+  res.send(createdProduct);
 
 }
 
