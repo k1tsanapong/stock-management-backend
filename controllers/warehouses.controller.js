@@ -18,4 +18,6 @@ const createWarehouse = async(req, res) => {
     getAllWarehouses,
     createWarehouse,
   };
+
+  //kim
   
