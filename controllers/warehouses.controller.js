@@ -14,9 +14,21 @@ const createWarehouse = async(req, res) => {
   res.send(createWarehouse)
 };
 
+const updateOneWarehouse = async(req, res) => {
+  const updateOneWarehouse = await warehousesModels.updateOneWarehouse(req.params.id, req.body);
+  res.send(updateOneWarehouse)
+}
+
+const deleteOneWarehouse = async(req, res) => {
+  const deleteOneWarehouse = await warehousesModels.deleteOneWarehouse(req.params.id, req.body);
+  res.send(deleteOneWarehouse)
+}
+
   module.exports = {
     getAllWarehouses,
     createWarehouse,
+    updateOneWarehouse,
+    deleteOneWarehouse,
   };
 
   //kim 5435
