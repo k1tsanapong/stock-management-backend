@@ -1,35 +1,38 @@
-const warehousesModels = require('../models/warehouses.models');
+const warehousesModels = require("../models/warehouses.models");
 
 const getAllWarehouses = async (req, res) => {
-    const getAllWarehouses =  await warehousesModels.getAllWarehouses();
+  const getAllWarehouses = await warehousesModels.getAllWarehouses();
 
-    console.log('getAllWarehouses');
-    res.send(getAllWarehouses);
-  };
-
-  
-
-const createWarehouse = async(req, res) => {
-  const createWarehouse= await warehousesModels.createWarehouse(req.body);
-  res.send(createWarehouse)
+  console.log("getAllWarehouses");
+  res.send(getAllWarehouses);
 };
 
-const updateOneWarehouse = async(req, res) => {
-  const updateOneWarehouse = await warehousesModels.updateOneWarehouse(req.params.id, req.body);
-  res.send(updateOneWarehouse)
-}
+const createWarehouse = async (req, res) => {
+  const createWarehouse = await warehousesModels.createWarehouse(req.body);
+  res.send(createWarehouse);
+};
 
-const deleteOneWarehouse = async(req, res) => {
-  const deleteOneWarehouse = await warehousesModels.deleteOneWarehouse(req.params.id, req.body);
-  res.send(deleteOneWarehouse)
-}
+const updateOneWarehouse = async (req, res) => {
+  const updateOneWarehouse = await warehousesModels.updateOneWarehouse(
+    req.params.id,
+    req.body
+  );
+  res.send(updateOneWarehouse);
+};
 
-  module.exports = {
-    getAllWarehouses,
-    createWarehouse,
-    updateOneWarehouse,
-    deleteOneWarehouse,
-  };
+const deleteOneWarehouse = async (req, res) => {
+  const deleteOneWarehouse = await warehousesModels.deleteOneWarehouse(
+    req.params.id,
+    req.body
+  );
+  res.send(deleteOneWarehouse);
+};
 
-  //kim 5435
-  
+module.exports = {
+  getAllWarehouses,
+  createWarehouse,
+  updateOneWarehouse,
+  deleteOneWarehouse,
+};
+
+//kim 5435
