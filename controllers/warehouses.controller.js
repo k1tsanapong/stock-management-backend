@@ -13,6 +13,8 @@ const createWarehouse = async (req, res) => {
 };
 
 const updateOneWarehouse = async (req, res) => {
+
+  
   const updateOneWarehouse = await warehousesModels.updateOneWarehouse(
     req.params.id,
     req.body
@@ -22,9 +24,8 @@ const updateOneWarehouse = async (req, res) => {
 
 const deleteOneWarehouse = async (req, res) => {
   const deleteOneWarehouse = await warehousesModels.deleteOneWarehouse(
-    req.params.id,
-    req.body
-  );
+    req.params.id
+    );
   res.send(deleteOneWarehouse);
 };
 

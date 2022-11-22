@@ -1,13 +1,62 @@
 const db = require("../db");
 const sharp = require("sharp");
+const { select } = require("../db");
+const { count } = require("console");
+
+const mysql = require(`mysql-await`);
+//create database connection
+const conn = mysql.createConnection({
+  host: "127.0.0.1",
+  user: "kim",
+  password: "kim",
+  database: "dbsour20",
+  port:3306
+});
+
+conn.connect((err) => {
+
+  if (err) throw err;
+    console.log(err);
+    
+  console.log("Mysql Connected...");
+});
+
 
 const getAllProducts = async () => {
   let results = [];
 
   try {
-    results = await db.select("*").from("product_types");
+    // results = await db.select("*").from("product_types");
 
-    console.log("getAllProducts => Successes");
+    /*
+    results = await db('items')
+    .select(['product_types.*'])
+    .count('items.product_id AS count')
+    .leftJoin('product_types', 'product_types.product_id', 'items.product_id')
+    .groupBy(['items.product_id', 'product_types.product_name']);
+
+    */
+
+
+    let sql = "SELECT *, IFNULL(items_count, 0) AS product_count FROM product_types LEFT JOIN (SELECT product_id, count(*) as items_count FROM items GROUP BY product_id) properties USING (product_id);";
+    let results = await conn.awaitQuery(sql);
+
+    return JSON.stringify({ status: 200, error: null, response: results });
+  } catch (err) {
+
+    
+
+    return JSON.stringify({ status: 500, error: err, response: results });
+  }
+};
+
+const getOneProduct = async (id) => {
+  let results = [];
+
+  try {
+    // results = await db.select("*,").from("product_types").where({product_id:id});
+    let sql = "SELECT *, IFNULL(items_count, 0) AS product_count FROM product_types LEFT JOIN (SELECT product_id, count(*) as items_count FROM items GROUP BY product_id) properties USING (product_id) Where product_id = ?;";
+    let results = await conn.awaitQuery(sql,id);
 
     return JSON.stringify({ status: 200, error: null, response: results });
   } catch (err) {
@@ -34,8 +83,13 @@ const createProduct = async (data) => {
         barcode,
       })
       .into("product_types");
+    return JSON.stringify({ status: 200, error: null, response: results });
+
+      
   } catch (err) {
     console.error(err);
+    return JSON.stringify({ status: 500, error: err, response: results });
+
   }
 };
 
@@ -57,6 +111,7 @@ const uploadImageProduct = async (image) => {
 
 module.exports = {
   getAllProducts,
+  getOneProduct,
   createProduct,
   uploadImageProduct,
 };

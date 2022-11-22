@@ -4,23 +4,25 @@ const fileUpload = require("express-fileupload");
 const cors = require("cors");
 const app = express();
 
+app.use("/static", express.static("static"));
+
+app.use(fileUpload());
+app.use(express.urlencoded({ extended: true }));
+
 app.use(cors({ origin: true }));
 app.use(cors());
 
 const hbs = require("hbs");
+app.set("view engine", "hbs");
+hbs.registerPartials(__dirname + "/views/partials");
 
 const homePage = require("./routers/homePage");
 const productsRouter = require("./routers/products.router");
 const warehousesRouter = require("./routers/warehouses.router");
-
-app.use(fileUpload());
-
-app.use(express.urlencoded({ extended: true }));
-app.set("view engine", "hbs");
-hbs.registerPartials(__dirname + "/views/partials");
-app.use("/static", express.static("static"));
+const itemsRouter = require('./routers/items.router');
 
 app.use("/", homePage);
+app.use("/items", itemsRouter);
 app.use("/products", productsRouter);
 app.use("/warehouses", warehousesRouter);
 

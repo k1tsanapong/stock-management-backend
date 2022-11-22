@@ -2,8 +2,14 @@ const productModels = require("../models/products.models");
 
 const getAllProducts = async (req, res) => {
   const allProducts = await productModels.getAllProducts();
-  console.log(allProducts);
+  // console.log(allProducts);
   res.send(allProducts);
+};
+
+const getOneProduct = async (req, res) => {
+  const getOneProduct = await productModels.getOneProduct(req.params.id);
+  // console.log(allProducts);
+  res.send(getOneProduct);
 };
 
 const createProductPage = (req, res) => {
@@ -34,6 +40,7 @@ const uploadImageProduct = async (req, res) => {
 
 module.exports = {
   getAllProducts,
+  getOneProduct,
   createProductPage,
   createProduct,
   uploadImageProduct,
