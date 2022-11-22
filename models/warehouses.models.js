@@ -13,12 +13,12 @@ const getAllWarehouses = async () => {
 };
 
 const createWarehouse = async (data) => {
-  const { warehouse_name } = data ?? {};
+  const { warehouse_name, warehouse_detail } = data ?? {};
 
   let results = [];
 
   try {
-    results = await db.insert({ warehouse_name }).into("warehouses");
+    results = await db.insert({ warehouse_name, warehouse_detail }).into("warehouses");
 
     return JSON.stringify({ status: 200, error: null, response: results });
   } catch (err) {
