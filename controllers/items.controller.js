@@ -1,10 +1,9 @@
-const { it } = require('node:test');
 const itemsModels = require('../models/items.models');
 
 const getAllItems = async (req, res) => 
 {
     const getAllItems = await itemsModels.getAllItems();
-    res.send(get);
+    res.send(getAllItems);
 };
 
 const getOneItem = async (req, res) =>

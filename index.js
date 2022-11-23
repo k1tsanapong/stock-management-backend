@@ -20,11 +20,15 @@ const homePage = require("./routers/homePage");
 const productsRouter = require("./routers/products.router");
 const warehousesRouter = require("./routers/warehouses.router");
 const itemsRouter = require('./routers/items.router');
+const ordersRouter = require('./routers/orders.router');
+
 
 app.use("/", homePage);
 app.use("/items", itemsRouter);
 app.use("/products", productsRouter);
 app.use("/warehouses", warehousesRouter);
+app.use("/orders", ordersRouter);
+
 
 app.listen(3001, () => {
   console.log("start");

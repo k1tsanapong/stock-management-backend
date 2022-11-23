@@ -1,17 +1,9 @@
-const db = require("../db");
+const {db} = require("../db");
 const sharp = require("sharp");
-const { select } = require("../db");
-const { count } = require("console");
 
-const mysql = require(`mysql-await`);
-//create database connection
-const conn = mysql.createConnection({
-  host: "127.0.0.1",
-  user: "kim",
-  password: "kim",
-  database: "dbsour20",
-  port:3306
-});
+const {conn} = require("../db");
+
+
 
 conn.connect((err) => {
 

@@ -1,6 +1,6 @@
-// const { connect } = require('http2');
 const knex =require('knex');
-// const Connection = require('mysql2/typings/mysql/lib/Connection');
+const mysql = require(`mysql-await`);
+
 
 const db = knex.default({
     client: 'mysql2',
@@ -13,4 +13,16 @@ const db = knex.default({
     }
 })
 
-module.exports = db;
+
+const conn = mysql.createConnection({
+    host: "127.0.0.1",
+    user: "kim",
+    password: "kim",
+    database: "dbsour20",
+    port:3306
+  });
+
+module.exports = {
+    db,
+    conn,
+};
