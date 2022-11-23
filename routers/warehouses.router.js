@@ -14,3 +14,5 @@ router.delete("/delete/:id", warehousesController.deleteOneWarehouse);
 
 module.exports = router;
 // kim here
+
+// seki here
