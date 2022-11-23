@@ -13,3 +13,4 @@ router.delete("/delete/:id", warehousesController.deleteOneWarehouse);
 // router.post('/upload', warehousesController.uploadImageProduct);
 
 module.exports = router;
+// kim here
