@@ -29,8 +29,9 @@ app.use("/products", productsRouter);
 app.use("/warehouses", warehousesRouter);
 app.use("/orders", ordersRouter);
 
+const PORT = process.env.PORT || 3000
 
-app.listen(3001, () => {
+app.listen(PORT, () => {
   console.log("start");
-  console.log("http://localhost:3001/");
+  console.log("http://localhost:" + PORT);
 });
