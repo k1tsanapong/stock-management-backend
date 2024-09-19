@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const knex =require('knex');
 const mysql = require(`mysql-await`);
 
@@ -5,44 +7,22 @@ const mysql = require(`mysql-await`);
 const db = knex.default({
     client: 'mysql2',
     connection: {  
-        host: 'mysql-sour20.alwaysdata.net',
-        user: 'sour20',
-        password: 'kitsanapong',
-        database: 'sour20_stocker',
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
         // port: 3306,
     }
 })
 
 
 const conn = mysql.createConnection({
-    host: "mysql-sour20.alwaysdata.net",
-    user: "sour20",
-    password: "kitsanapong",
-    database: "sour20_stocker",
-    // port:3306
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    // port: 3306,
   });
-
-
-//   const db = knex.default({
-//     client: 'mysql2',
-//     connection: {  
-//         user: 'root',
-//         password: 'kitsanapong',
-//         host: '127.0.0.1',
-//         port: 3306,
-//         database: 'dbsour20'
-//     }
-// })
-
-
-// const conn = mysql.createConnection({
-//     host: "127.0.0.1",
-//     user: "kim",
-//     password: "kim",
-//     database: "dbsour20",
-//     port:3306
-//   });
-
 
 module.exports = {
     db,
